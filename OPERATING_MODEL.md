@@ -1,5 +1,16 @@
 # Operating Model
 
+## Default Rule
+这个仓库的**默认主入口就是 `project-pm`**。
+也就是说，默认先做：
+- 分析
+- 拆任务
+- 补文档
+- 做归属判断
+- 再决定是否进入实现
+
+而不是一上来就直接修代码。
+
 ## Recommended Setup
 
 ### 1. Group chat only talks to the PM agent
@@ -13,14 +24,15 @@
 3. 生成 tasks/*
 4. 再调用 coding-agent 或 eng-executor 执行
 
-### 3. Use `project-pm-guarded` for planning and triage
-当你希望它保持 PM 身份时，优先触发这个 skill。
+### 3. `project-pm` is now the guarded default
+如果你只是想让它保持 PM 身份，直接用默认主入口即可。
+只有在任务清楚后，再进入执行模式。
 
 ### 4. Use `eng-executor` only after a task is ready
 实现类工作应该基于任务单执行，而不是直接根据群消息裸奔。
 
 ## Suggested Prompts
-- 先按 `project-pm-guarded` 模式处理，先不要写代码。
+- 先按 `project-pm` 模式处理，先不要写代码。
 - 从 PM / tech lead 视角分析这个问题，更新任务单和验收标准。
 - 任务单已准备好，现在可以调用 `eng-executor` 或 coding-agent 实现。
 
